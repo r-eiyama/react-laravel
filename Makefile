@@ -2,11 +2,11 @@ up:
 	docker-compose up -d
 	@make cache-clear
 build:
-	docker-compose build
+	docker-compose up -d --build
+	@make cache-clear
 install:
-	cp .env.example .env
-	@make up
-	docker-compose exec app php artisan migrate:fresh --seed
+	@make build
+	#docker-compose exec app php artisan migrate:fresh --seed
 	#docker-compose exec app php artisan migrate:fresh --seed --env=testing
 reinstall:
 	@make destroy

@@ -19,7 +19,7 @@ services:
       - TZ=${TZ}
 
   web:
-    image: nginx:1.18-alpine
+    build: docker/nginx
     depends_on:
       - app
     ports:
