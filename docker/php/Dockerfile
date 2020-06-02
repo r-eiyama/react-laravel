@@ -13,3 +13,8 @@ RUN set -eux && \
   curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer && \
   composer config -g repos.packagist composer https://packagist.jp && \
   composer global require hirak/prestissimo
+
+RUN apk add bash curl nodejs
+RUN touch ~/.bashrc \
+  && curl -o- -L https://yarnpkg.com/install.sh | bash \
+  && ln -s "$HOME/.yarn/bin/yarn" /usr/local/bin/yarn
