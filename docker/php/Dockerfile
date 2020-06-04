@@ -14,7 +14,10 @@ RUN set -eux && \
   composer config -g repos.packagist composer https://packagist.jp && \
   composer global require hirak/prestissimo
 
-RUN apk add bash curl nodejs
-RUN touch ~/.bashrc \
-  && curl -o- -L https://yarnpkg.com/install.sh | bash \
-  && ln -s "$HOME/.yarn/bin/yarn" /usr/local/bin/yarn
+RUN apk add --update nodejs nodejs-npm
+
+# yarnをinstallする場合はこちら(今回はnpmを使ってみる)
+#RUN apk add bash curl nodejs
+#RUN touch ~/.bashrc \
+#  && curl -o- -L https://yarnpkg.com/install.sh | bash \
+#  && ln -s "$HOME/.yarn/bin/yarn" /usr/local/bin/yarn
